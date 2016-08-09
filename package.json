@@ -4,7 +4,7 @@
   "description": "A Redux reducer and higher-order component decorator for use with react-burger-menu",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-register",
+    "test": "mocha --require test/utils/setup.js --compilers js:babel-register",
     "test:watch": "npm test -- --watch",
     "start": "webpack-dev-server --progress --inline --colors --hot"
   },
@@ -42,8 +42,10 @@
     "eslint-plugin-import": "^1.12.0",
     "eslint-plugin-jsx-a11y": "^2.0.1",
     "eslint-plugin-react": "^6.0.0",
+    "jsdom": "^9.4.1",
     "mocha": "^3.0.1",
     "react": "^15.3.0",
+    "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",

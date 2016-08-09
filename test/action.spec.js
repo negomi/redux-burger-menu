@@ -4,10 +4,11 @@ import toggleMenu from '../src/action';
 
 describe('action', () => {
   it('should toggle the menu state', () => {
-    const expected = {
+    expect(
+      toggleMenu(true)
+    ).to.deep.equal({
       type: TOGGLE_MENU,
       isOpen: true
-    };
-    expect(toggleMenu(true)).to.deep.equal(expected);
+    });
   });
 });

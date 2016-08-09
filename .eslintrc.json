@@ -1,11 +1,13 @@
 {
   "env": {
-    "mocha": true
+    "mocha": true,
+    "browser": true
   },
   "extends": "airbnb",
   "rules": {
     "no-console": 1,
     "comma-dangle": 0,
-    "arrow-body-style": 0
+    "arrow-body-style": 0,
+    "no-unused-vars": 1
   }
 }

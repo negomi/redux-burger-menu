@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import { toggleMenu } from './action';
+import toggleMenu from './action';
 
-const reduxBurgerMenu = (composedComponent) => {
+const reduxBurgerMenu = (ComposedComponent) => {
   const mapStateToProps = (state) => {
     return {
-      isOpen: state.isOpen
+      isOpen: state.burgerMenu.isOpen
     };
   };
 
@@ -19,7 +19,7 @@ const reduxBurgerMenu = (composedComponent) => {
   return connect(
     mapStateToProps,
     mapDispatchToProps
-  )(composedComponent);
+  )(ComposedComponent);
 };
 
 export default reduxBurgerMenu;
