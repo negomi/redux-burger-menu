@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --require test/utils/setup.js --compilers js:babel-register",
     "test:watch": "npm test -- --watch",
-    "start": "webpack-dev-server --progress --inline --colors --hot"
+    "start": "webpack-dev-server --progress --inline --colors --hot --content-base docs/"
   },
   "keywords": [
     "decorator",
@@ -36,12 +36,14 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-register": "^6.11.6",
     "chai": "^3.5.0",
+    "css-loader": "^0.23.1",
     "enzyme": "^2.4.1",
     "eslint": "^3.2.2",
     "eslint-config-airbnb": "^10.0.0",
     "eslint-plugin-import": "^1.12.0",
     "eslint-plugin-jsx-a11y": "^2.0.1",
     "eslint-plugin-react": "^6.0.0",
+    "file-loader": "^0.9.0",
     "jsdom": "^9.4.1",
     "mocha": "^3.0.1",
     "react": "^15.3.0",
@@ -49,6 +51,8 @@
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "style-loader": "^0.13.1",
+    "svg-inline-loader": "^0.6.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   }

@@ -1,8 +1,8 @@
 module.exports = {
-  entry: "docs/index.js",
+  entry: './docs/index.js',
   output: {
     path: __dirname,
-    filename: "docs/bundle.js"
+    filename: 'bundle.js'
   },
   module: {
     loaders: [
@@ -13,6 +13,14 @@ module.exports = {
         query: {
           presets: ['es2015', 'react', 'react-hmre']
         }
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-inline'
       }
     ]
   }

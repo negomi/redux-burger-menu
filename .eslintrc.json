@@ -8,6 +8,10 @@
     "no-console": 1,
     "comma-dangle": 0,
     "arrow-body-style": 0,
-    "no-unused-vars": 1
+    "no-unused-vars": 1,
+    "max-len": 0,
+    "space-before-function-paren": 0,
+    "react/jsx-filename-extension": 0,
+    "import/no-extraneous-dependencies": 0
   }
 }

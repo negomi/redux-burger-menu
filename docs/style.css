@@ -1,0 +1,66 @@
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #4e4a46;
+  font-family: 'Raleway', sans-serif;
+}
+
+a {
+  color: #4e4a46;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c94e50;
+}
+
+h2 {
+  max-width: 36rem;
+  padding: 0 1rem;
+  margin: auto;
+  color: #fffce1;
+  font-weight: 400;
+  line-height: 2rem;
+  text-align: center;
+}
+
+header {
+  position: relative;
+  background-color: #b4bad2;
+  padding: 4rem 0 4rem;
+  border-bottom: 3rem solid #c94e50;
+}
+
+.burger {
+  position: relative;
+  display: block;
+  width: 15rem;
+  margin: 0 auto 2rem;
+}
+
+.burger svg {
+  fill: #4e4a46;
+}
+
+.burger:hover svg {
+  fill: #c94e50;
+}
+
+.burger::after {
+  position: absolute;
+  top: 1.8rem;
+  left: 0;
+  right: 0;
+  color: #b4bad2;
+  content: 'R';
+  font-family: 'Righteous', sans-serif;
+  font-size: 4rem;
+  text-align: center;
+}
