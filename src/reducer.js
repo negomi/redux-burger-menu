@@ -1,4 +1,4 @@
-import { TOGGLE_MENU } from './actionType';
+import { TOGGLE_MENU } from './action';
 
 const initialState = {
   isOpen: false

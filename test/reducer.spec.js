@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { TOGGLE_MENU } from '../src/actionType';
+import { TOGGLE_MENU } from '../src/action';
 import reducer from '../src/reducer';
 
 describe('reducer', () => {
