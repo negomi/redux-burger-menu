@@ -4,12 +4,15 @@
 
 html {
   box-sizing: border-box;
+
+  font-size: 1.2rem;
 }
 
 body {
   margin: 0;
   background-color: #4e4a46;
   font-family: 'Raleway', sans-serif;
+  color: #fffce1;
 }
 
 a {
@@ -29,6 +32,13 @@ h2 {
   font-weight: 400;
   line-height: 2rem;
   text-align: center;
+}
+
+h3 {
+  margin-top: 2rem;
+
+  color: #c94e50;
+  font-weight: 600;
 }
 
 header {
@@ -63,4 +73,10 @@ header {
   font-family: 'Righteous', sans-serif;
   font-size: 4rem;
   text-align: center;
+}
+
+main {
+  max-width: 46rem;
+  padding: 2rem 1rem;
+  margin: auto;
 }
