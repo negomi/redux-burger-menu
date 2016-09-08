@@ -4,7 +4,7 @@ import { tomorrowNight as syntaxStyle } from 'react-syntax-highlighter/dist/styl
 import s from '../style.css';
 import burger from '../burger.svg';
 
-const Docs = function Docs() {
+const Docs = function() {
   const installCode = `
   npm install redux-burger-menu react-burger-menu --save
   `;
