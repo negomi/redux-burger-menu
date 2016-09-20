@@ -1,8 +1,13 @@
 import React from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { tomorrowNight as syntaxStyle } from 'react-syntax-highlighter/dist/styles';
+import js from 'highlight.js/lib/languages/javascript';
+import bash from 'highlight.js/lib/languages/bash';
+import lowlight from 'lowlight/lib/core';
+import { tomorrowNight as syntaxStyle } from 'react-syntax-highlighter/dist/styles/tomorrow-night';
 import s from '../style.css';
 import burger from '../burger.svg';
+
+lowlight.registerLanguage('javascript', js);
+lowlight.registerLanguage('bash', bash);
 
 const Docs = function() {
   const installCode = `

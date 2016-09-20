@@ -1,13 +1,16 @@
 {
   "name": "redux-burger-menu",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "A Redux reducer and higher-order component decorator for use with react-burger-menu",
   "main": "index.js",
   "scripts": {
     "test": "mocha --require test/utils/setup.js --compilers js:babel-register",
     "test:watch": "npm test -- --watch",
     "start": "node server.js",
-    "lint": "eslint src docs"
+    "lint": "eslint src docs",
+    "build": "./scripts/build.sh",
+    "preversion": "npm test && npm run lint",
+    "postversion": "./scripts/postversion.sh"
   },
   "keywords": [
     "decorator",
@@ -57,6 +60,7 @@
     "react-redux": "^4.4.5",
     "react-syntax-highlighter": "^2.3.0",
     "redux": "^3.5.2",
+    "strip-loader": "^0.1.2",
     "style-loader": "^0.13.1",
     "svg-inline-loader": "^0.6.1",
     "webpack": "^1.13.1",
