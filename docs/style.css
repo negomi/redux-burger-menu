@@ -15,6 +15,10 @@ body {
   color: #fffce1;
 }
 
+p {
+  line-height: 1.4rem;
+}
+
 a {
   color: #4e4a46;
   text-decoration: none;

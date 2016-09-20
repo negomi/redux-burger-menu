@@ -67,7 +67,7 @@ const Docs = function() {
         <p>When installed as above, the menu can be opened and closed in all the default ways (i.e. using the built in icon and cross buttons, plus clicking on the overlay or pressing the ESC key).</p>
         <p>The burgerMenu part of your store will look like this:</p>
         <SyntaxHighlighter language="javascript" style={syntaxStyle}>{storeCode}</SyntaxHighlighter>
-        <p>If you want to trigger a menu state change from elsewhere in your app, you can do this by updating the <code>burgerMenu.isOpen</code> boolean:</p>
+        <p>If you want to trigger a menu state change from elsewhere in your app, you can do this using the redux-burger-menu action:</p>
         <SyntaxHighlighter language="javascript" style={syntaxStyle}>{dispatchCode}</SyntaxHighlighter>
       </main>
     </div>
