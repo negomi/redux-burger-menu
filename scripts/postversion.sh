@@ -6,4 +6,4 @@ git add .
 git commit -m $(node -p -e "require('./package.json').version")
 
 echo "-- Pushing to gh-pages"
-# git subtree push --prefix dist origin gh-pages
+git subtree push --prefix dist origin gh-pages
