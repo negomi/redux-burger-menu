@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  devtool: 'eval-source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:3000/',
     './docs/index'
@@ -15,8 +15,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
-      'process.env.REACT_SYNTAX_HIGHLIGHTER_LIGHT_BUILD': true,
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      'process.env.NODE_ENV': JSON.stringify('development')
     })
   ],
   module: {
