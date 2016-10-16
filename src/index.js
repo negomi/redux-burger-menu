@@ -1,6 +1,6 @@
-import decorator from './src/decorator';
-import reducer from './src/reducer';
-import action from './src/action';
+import decorator from './decorator';
+import reducer from './reducer';
+import action from './action';
 
 export default {
   decorator,
