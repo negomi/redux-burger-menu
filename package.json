@@ -2,14 +2,14 @@
   "name": "redux-burger-menu",
   "version": "0.0.1",
   "description": "A Redux reducer and higher-order component decorator for use with react-burger-menu",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha --require test/utils/setup.js --compilers js:babel-register",
     "test:watch": "npm test -- --watch",
     "start": "node server.js",
     "lint": "eslint src docs",
     "build": "./scripts/build.sh",
-    "preversion": "npm test && npm run lint",
+    "preversion": "npm test && npm run lint && npm run build",
     "postversion": "./scripts/postversion.sh"
   },
   "keywords": [
@@ -35,6 +35,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.16.0",
     "babel-core": "^6.13.2",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",

@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "-- Transpile src files to lib directory"
+babel src --out-dir lib
+
 echo "-- Building docs files to dist directory"
 rm -rf dist
 NODE_ENV=production webpack --config webpack.production.config.js --progress -p
