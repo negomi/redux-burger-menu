@@ -1,4 +1,4 @@
-redux-burger-menu
+redux-burger-menu [![Build Status](https://travis-ci.org/negomi/redux-burger-menu.svg?branch=master)](https://travis-ci.org/negomi/redux-burger-menu)
 ==========
 
 A Redux reducer and higher-order component decorator for use with react-burger-menu.
