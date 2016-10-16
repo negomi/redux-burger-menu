@@ -1,6 +1,6 @@
 {
   "name": "redux-burger-menu",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Redux reducer and higher-order component decorator for use with react-burger-menu",
   "main": "lib/index.js",
   "scripts": {
