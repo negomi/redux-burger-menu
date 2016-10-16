@@ -9,7 +9,7 @@
     "start": "node server.js",
     "lint": "eslint src docs",
     "build": "./scripts/build.sh",
-    "preversion": "npm test && npm run lint && npm run build",
+    "preversion": "npm test && npm run lint",
     "postversion": "./scripts/postversion.sh"
   },
   "keywords": [
