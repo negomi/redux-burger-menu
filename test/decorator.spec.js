@@ -42,4 +42,25 @@ describe('decorator', () => {
       expect(inner.props().onStateChange).to.be.a('function');
     });
   });
+
+  it('should allow multiple menus', () => {
+    const store = makeStore({
+      'main': { isOpen: true },
+      'side': { isOpen: false }
+    });
+    const MainMenu = decorator(Menu, 'main');
+    const SideMenu = decorator(Menu, 'side');
+    const wrapper = mount(
+      <Provider store={store}>
+        <div>
+          <MainMenu />
+          <SideMenu />
+        </div>
+      </Provider>
+    );
+    const mainInner = wrapper.find(Menu).first();
+    const sideInner = wrapper.find(Menu).last();
+    expect(mainInner.props().isOpen).to.equal(true);
+    expect(sideInner.props().isOpen).to.equal(false);
+  });
 });

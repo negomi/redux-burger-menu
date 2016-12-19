@@ -7,9 +7,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_MENU:
-      return Object.assign({}, state, {
-        isOpen: action.isOpen
-      });
+      const { isOpen, menuId } = action.payload
+      return menuId
+        ? { ...state, [menuId]: { isOpen } }
+        : { ...state, isOpen }
     default:
       return state;
   }

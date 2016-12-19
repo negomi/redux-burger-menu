@@ -1,4 +1,3 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 const jsdom = require('jsdom').jsdom;
 
 const exposedProperties = ['window', 'navigator', 'document'];

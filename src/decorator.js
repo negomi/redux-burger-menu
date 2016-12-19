@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 import toggleMenu from './action';
 
-const reduxBurgerMenu = (ComposedComponent) => {
+const reduxBurgerMenu = (ComposedComponent, menuId) => {
   const mapStateToProps = (state) => {
+    const { burgerMenu } = state
     return {
-      isOpen: state.burgerMenu.isOpen
+      isOpen: menuId ? burgerMenu[menuId].isOpen : burgerMenu.isOpen
     };
   };
 
   const mapDispatchToProps = (dispatch) => {
     return {
       onStateChange: (newState) => {
-        dispatch(toggleMenu(newState.isOpen));
+        dispatch(toggleMenu(newState.isOpen, menuId));
       }
     };
   };
