@@ -16,7 +16,7 @@ const Docs = function() {
   const reducers = {
     // Your other reducers go here
     burgerMenu // Must be mounted at 'burgerMenu'
-  }
+  };
 
   const reducer = combineReducers(reducers);
   const store = createStore(reducer);
@@ -31,9 +31,36 @@ const Docs = function() {
   export default reduxBurgerMenu(Menu);
   `;
 
+  const multipleDecoratorCode = `
+  // PrimaryMenu.js
+
+  import {slide as Menu} from 'react-burger-menu';
+  import {decorator as reduxBurgerMenu} from 'redux-burger-menu';
+
+  export default reduxBurgerMenu(Menu, 'primary');
+
+  // SecondaryMenu.js
+
+  import {stack as Menu} from 'react-burger-menu';
+  import {decorator as reduxBurgerMenu} from 'redux-burger-menu';
+
+  export default reduxBurgerMenu(Menu, 'secondary');
+  `;
+
   const storeCode = `
   burgerMenu: {
     isOpen: false
+  }
+  `;
+
+  const multipleStoreCode = `
+  burgerMenu: {
+    primary: {
+      isOpen: true
+    },
+    secondary: {
+      isOpen: false
+    }
   }
   `;
 
@@ -41,6 +68,12 @@ const Docs = function() {
   import {action as toggleMenu} from 'redux-burger-menu';
 
   store.dispatch(toggleMenu({isOpen: true}));
+  `;
+
+  const multipleDispatchCode = `
+  import {action as toggleMenu} from 'redux-burger-menu';
+
+  store.dispatch(toggleMenu({isOpen: true}, 'primary'));
   `;
 
   return (
@@ -69,6 +102,13 @@ const Docs = function() {
         <SyntaxHighlighter language="javascript" style={syntaxStyle}>{storeCode}</SyntaxHighlighter>
         <p>If you want to trigger a menu state change from elsewhere in your app, you can do this using the redux-burger-menu action:</p>
         <SyntaxHighlighter language="javascript" style={syntaxStyle}>{dispatchCode}</SyntaxHighlighter>
+        <h3>Multiple menus</h3>
+        <p>You can store the state of multiple instances of react-burger-menu. To do this, you need to pass a unique string identifier as the second argument when you decorate each of your menu components:</p>
+        <SyntaxHighlighter language="javascript" style={syntaxStyle}>{multipleDecoratorCode}</SyntaxHighlighter>
+        <p>Then to open or close a menu, you need to pass its ID as the second argument when you call the <code>toggleMenu</code> action creator:</p>
+        <SyntaxHighlighter language="javascript" style={syntaxStyle}>{multipleDispatchCode}</SyntaxHighlighter>
+        <p>When using multiple menus, the burgerMenu part of your store will contain all your menus, keyed by their IDs, like this:</p>
+        <SyntaxHighlighter language="javascript" style={syntaxStyle}>{multipleStoreCode}</SyntaxHighlighter>
       </main>
     </div>
   );
