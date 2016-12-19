@@ -4,7 +4,7 @@ import reducer from '../src/reducer';
 
 describe('reducer', () => {
   it('should return the initial state', () => {
-    expect(reducer(undefined, {})).to.deep.equal({ isOpen: false });
+    expect(reducer(undefined, {})).to.deep.equal({});
   });
 
   it('should handle TOGGLE_MENU', () => {

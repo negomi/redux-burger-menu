@@ -4,9 +4,13 @@ import toggleMenu from './action';
 const reduxBurgerMenu = (ComposedComponent, menuId) => {
   const mapStateToProps = (state) => {
     const { burgerMenu } = state
-    return {
-      isOpen: menuId ? burgerMenu[menuId].isOpen : burgerMenu.isOpen
-    };
+    let isOpen;
+    if (menuId) {
+      isOpen = burgerMenu[menuId] ? burgerMenu[menuId].isOpen : false;
+    } else {
+      isOpen = burgerMenu.isOpen ? burgerMenu.isOpen : false;
+    }
+    return { isOpen };
   };
 
   const mapDispatchToProps = (dispatch) => {
