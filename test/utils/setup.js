@@ -1,4 +1,6 @@
 const jsdom = require('jsdom').jsdom;
+const chai = require('chai')
+const chaiImmutable = require('chai-immutable');
 
 const exposedProperties = ['window', 'navigator', 'document'];
 
@@ -14,3 +16,5 @@ Object.keys(document.defaultView).forEach((property) => {
 global.navigator = {
   userAgent: 'node.js'
 };
+
+chai.use(chaiImmutable)
