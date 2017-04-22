@@ -47,6 +47,13 @@ const Docs = function() {
   export default reduxBurgerMenu(Menu, 'secondary');
   `;
 
+  const immutableCode = `
+  import {reducer as burgerMenu} from 'redux-burger-menu/immutable';
+  import {slide as Menu} from 'react-burger-menu/immutable';
+  import {decorator as reduxBurgerMenu} from 'redux-burger-menu/immutable';
+  import {action as toggleMenu} from 'redux-burger-menu/immutable';
+  `;
+
   const storeCode = `
   burgerMenu: {
     isOpen: false
@@ -109,6 +116,9 @@ const Docs = function() {
         <SyntaxHighlighter language="javascript" style={syntaxStyle}>{multipleDispatchCode}</SyntaxHighlighter>
         <p>When using multiple menus, the burgerMenu part of your store will contain all your menus, keyed by their IDs, like this:</p>
         <SyntaxHighlighter language="javascript" style={syntaxStyle}>{multipleStoreCode}</SyntaxHighlighter>
+        <h3>Using Immutable.js?</h3>
+        <p>Just import everything from <code>redux-burger-menu/immutable</code> instead:</p>
+        <SyntaxHighlighter language="javascript" style={syntaxStyle}>{immutableCode}</SyntaxHighlighter>
       </main>
     </div>
   );
