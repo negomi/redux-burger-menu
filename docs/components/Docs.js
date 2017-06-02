@@ -74,13 +74,14 @@ const Docs = function() {
   const dispatchCode = `
   import {action as toggleMenu} from 'redux-burger-menu';
 
-  store.dispatch(toggleMenu({isOpen: true}));
+  const isOpen = true
+  store.dispatch(toggleMenu(isOpen));
   `;
 
   const multipleDispatchCode = `
   import {action as toggleMenu} from 'redux-burger-menu';
 
-  store.dispatch(toggleMenu({isOpen: true}, 'primary'));
+  store.dispatch(toggleMenu(true, 'primary'));
   `;
 
   return (
@@ -107,7 +108,7 @@ const Docs = function() {
         <p>When installed as above, the menu can be opened and closed in all the default ways (i.e. using the built in icon and cross buttons, plus clicking on the overlay or pressing the ESC key).</p>
         <p>The burgerMenu part of your store will look like this:</p>
         <SyntaxHighlighter language="javascript" style={syntaxStyle}>{storeCode}</SyntaxHighlighter>
-        <p>If you want to trigger a menu state change from elsewhere in your app, you can do this using the redux-burger-menu action:</p>
+        <p>If you want to trigger a menu state change from elsewhere in your app, you can do this using the redux-burger-menu action creator, passing the desired open state as a boolean:</p>
         <SyntaxHighlighter language="javascript" style={syntaxStyle}>{dispatchCode}</SyntaxHighlighter>
         <h3>Multiple menus</h3>
         <p>You can store the state of multiple instances of react-burger-menu. To do this, you need to pass a unique string identifier as the second argument when you decorate each of your menu components:</p>
