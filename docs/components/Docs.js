@@ -49,7 +49,6 @@ const Docs = function() {
 
   const immutableCode = `
   import {reducer as burgerMenu} from 'redux-burger-menu/immutable';
-  import {slide as Menu} from 'react-burger-menu/immutable';
   import {decorator as reduxBurgerMenu} from 'redux-burger-menu/immutable';
   import {action as toggleMenu} from 'redux-burger-menu/immutable';
   `;
