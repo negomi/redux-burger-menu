@@ -1,13 +1,14 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
+import sinon from 'sinon';
 import { Provider } from 'react-redux';
 import { combineReducers, createStore } from 'redux';
+import { slide as Menu } from 'react-burger-menu';
 import reducer from '../src/reducer.js';
 import decorator from '../src/decorator.js';
 
 describe('decorator', () => {
-  const Menu = () => <div />;
   const ReduxBurgerMenu = decorator(Menu);
   const makeStore = (initialState = {}) => createStore(combineReducers({
     burgerMenu: reducer
@@ -30,9 +31,10 @@ describe('decorator', () => {
 
   describe('inner component', () => {
     const store = makeStore({ isOpen: false });
+    const onStateChange = sinon.spy();
     const wrapper = mount(
       <Provider store={store}>
-        <ReduxBurgerMenu />
+        <ReduxBurgerMenu onStateChange={onStateChange} />
       </Provider>
     );
     const inner = wrapper.find(Menu);
@@ -40,6 +42,11 @@ describe('decorator', () => {
     it('should receive correct props', () => {
       expect(inner.props().isOpen).to.equal(false);
       expect(inner.props().onStateChange).to.be.a('function');
+    });
+
+    it('should retain any existing onStateChange callback', () => {
+      store.dispatch({type: 'TOGGLE_MENU', payload: {isOpen: true}})
+      expect(onStateChange.calledWith({isOpen: true})).to.equal(true);
     });
   });
 

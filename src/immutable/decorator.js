@@ -11,10 +11,13 @@ const reduxBurgerMenu = (ComposedComponent, menuId) => {
     };
   };
 
-  const mapDispatchToProps = (dispatch) => {
+  const mapDispatchToProps = (dispatch, props) => {
     return {
       onStateChange: (newState) => {
         dispatch(toggleMenu(newState.isOpen, menuId));
+        if (typeof props.onStateChange === 'function') {
+          props.onStateChange(newState);
+        }
       }
     };
   };
