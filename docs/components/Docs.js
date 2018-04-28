@@ -70,6 +70,23 @@ const Docs = function() {
   }
   `;
 
+  const multipleStoreHydrationCode = `
+  import { createStore } from 'redux';
+
+  const initialState = {
+    burgerMenu: {
+      primary: {
+        isOpen: true
+      },
+      secondary: {
+        isOpen: false
+      }
+    }
+  };
+
+  const store = createStore(combineReducers(...), initialState);
+  `;
+
   const dispatchCode = `
   import {action as toggleMenu} from 'redux-burger-menu';
 
@@ -114,7 +131,9 @@ const Docs = function() {
         <SyntaxHighlighter language="javascript" style={syntaxStyle}>{multipleDecoratorCode}</SyntaxHighlighter>
         <p>Then to open or close a menu, you need to pass its ID as the second argument when you call the <code>toggleMenu</code> action creator:</p>
         <SyntaxHighlighter language="javascript" style={syntaxStyle}>{multipleDispatchCode}</SyntaxHighlighter>
-        <p>When using multiple menus, the burgerMenu part of your store will contain all your menus, keyed by their IDs, like this:</p>
+        <p>The final thing you have to do is hydrate your store with preloaded state using the IDs you gave each of your menus. You can do this by <a href="https://redux.js.org/recipes/structuring-reducers/initializing-state">passing it as the second argument to Redux's <code>createStore</code> method</a>, which will look something like this:</p>
+        <SyntaxHighlighter language="javascript" style={syntaxStyle}>{multipleStoreHydrationCode}</SyntaxHighlighter>
+        <p>The burgerMenu part of your store will then contain all your menus, keyed by their IDs, like this:</p>
         <SyntaxHighlighter language="javascript" style={syntaxStyle}>{multipleStoreCode}</SyntaxHighlighter>
         <h3>Using Immutable.js?</h3>
         <p>Just import everything from <code>redux-burger-menu/immutable</code> instead:</p>

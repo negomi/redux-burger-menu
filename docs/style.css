@@ -20,11 +20,15 @@ p {
 }
 
 a {
-  color: #4e4a46;
+  color: #c94e50;
   text-decoration: none;
 }
 
-a:hover {
+h2 a {
+  color: #4e4a46;
+}
+
+h2 a:hover {
   color: #c94e50;
 }
 
