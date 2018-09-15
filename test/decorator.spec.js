@@ -30,14 +30,24 @@ describe('decorator', () => {
   });
 
   describe('inner component', () => {
-    const store = makeStore({ isOpen: false });
-    const onStateChange = sinon.spy();
-    const wrapper = mount(
-      <Provider store={store}>
-        <ReduxBurgerMenu onStateChange={onStateChange} />
-      </Provider>
-    );
-    const inner = wrapper.find(Menu);
+    const toggleAction = {type: 'TOGGLE_MENU', payload: {isOpen: true}};
+    let store;
+    let wrapper;
+    let inner;
+    let dispatchSpy;
+    let onStateChange;
+
+    beforeEach(() => {
+      store = makeStore({ isOpen: false });
+      dispatchSpy = sinon.spy(store, 'dispatch');
+      onStateChange = sinon.spy();
+      wrapper = mount(
+        <Provider store={store}>
+          <ReduxBurgerMenu onStateChange={onStateChange} />
+        </Provider>
+      );
+      inner = wrapper.find(Menu);
+    });
 
     it('should receive correct props', () => {
       expect(inner.props().isOpen).to.equal(false);
@@ -45,8 +55,13 @@ describe('decorator', () => {
     });
 
     it('should retain any existing onStateChange callback', () => {
-      store.dispatch({type: 'TOGGLE_MENU', payload: {isOpen: true}})
+      store.dispatch(toggleAction);
       expect(onStateChange.calledWith({isOpen: true})).to.equal(true);
+    });
+
+    it('should dispatch single action when toggled externally', () => {
+      store.dispatch(toggleAction);
+      expect(dispatchSpy.withArgs(toggleAction).calledOnce).to.equal(true);
     });
   });
 

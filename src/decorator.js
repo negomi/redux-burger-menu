@@ -2,31 +2,38 @@ import { connect } from 'react-redux';
 import toggleMenu from './action';
 
 const reduxBurgerMenu = (ComposedComponent, menuId) => {
-  const mapStateToProps = (state) => {
-    const { burgerMenu } = state
-    let isOpen;
-    if (menuId) {
-      isOpen = burgerMenu[menuId] ? burgerMenu[menuId].isOpen : false;
-    } else {
-      isOpen = burgerMenu.isOpen ? burgerMenu.isOpen : false;
-    }
-    return { isOpen };
-  };
+  const mapStateToProps = ({ burgerMenu }) => ({
+    isOpen: menuId
+      ? burgerMenu.hasOwnProperty(menuId) ? burgerMenu[menuId].isOpen : false
+      : burgerMenu.hasOwnProperty('isOpen') ? burgerMenu.isOpen : false
+  });
 
-  const mapDispatchToProps = (dispatch, props) => {
-    return {
-      onStateChange: (newState) => {
-        dispatch(toggleMenu(newState.isOpen, menuId));
-        if (typeof props.onStateChange === 'function') {
-          props.onStateChange(newState);
-        }
+  const mapDispatchToProps = (dispatch, props) => ({
+    onStateChange: (newState) => {
+      dispatch(toggleMenu(newState.isOpen, menuId));
+      if (typeof props.onStateChange === 'function') {
+        props.onStateChange(newState);
       }
-    };
-  };
+    }
+  });
 
   return connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
+    (stateProps, dispatchProps, ownProps) => ({
+      ...stateProps,
+      ...dispatchProps,
+      ...ownProps,
+      onStateChange: (newState) => {
+        if (stateProps.isOpen !== newState.isOpen) {
+          dispatchProps.onStateChange(newState);
+        } else {
+          if (typeof ownProps.onStateChange === 'function') {
+            ownProps.onStateChange(newState);
+          }
+        }
+      }
+    })
   )(ComposedComponent);
 };
 

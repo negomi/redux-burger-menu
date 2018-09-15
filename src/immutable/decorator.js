@@ -11,20 +11,32 @@ const reduxBurgerMenu = (ComposedComponent, menuId) => {
     };
   };
 
-  const mapDispatchToProps = (dispatch, props) => {
-    return {
-      onStateChange: (newState) => {
-        dispatch(toggleMenu(newState.isOpen, menuId));
-        if (typeof props.onStateChange === 'function') {
-          props.onStateChange(newState);
-        }
+  const mapDispatchToProps = (dispatch, props) => ({
+    onStateChange: (newState) => {
+      dispatch(toggleMenu(newState.isOpen, menuId));
+      if (typeof props.onStateChange === 'function') {
+        props.onStateChange(newState);
       }
-    };
-  };
+    }
+  });
 
   return connect(
     mapStateToProps,
-    mapDispatchToProps
+    mapDispatchToProps,
+    (stateProps, dispatchProps, ownProps) => ({
+      ...stateProps,
+      ...dispatchProps,
+      ...ownProps,
+      onStateChange: (newState) => {
+        if (stateProps.isOpen !== newState.isOpen) {
+          dispatchProps.onStateChange(newState);
+        } else {
+          if (typeof ownProps.onStateChange === 'function') {
+            ownProps.onStateChange(newState);
+          }
+        }
+      }
+    })
   )(ComposedComponent);
 };
 

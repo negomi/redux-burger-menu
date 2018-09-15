@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha --recursive --require test/utils/setup.js --compilers js:babel-register",
-    "test:watch": "npm test -- --watch",
+    "test:watch": "npm test -- --watch --reporter min",
     "start": "node server.js",
     "lint": "eslint src docs",
     "build": "./scripts/build.sh",
